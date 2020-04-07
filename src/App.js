@@ -1,7 +1,10 @@
 import React from 'react';
 import './App.css';
-import MainPage from './components/MainPage/MainPage'
-import ReportPage from './components/ReportPage/ReportPage'
+import MainPage from './components/MainPage/MainPage';
+import ReportPage from './components/ReportPage/ReportPage';
+import DrawPage from './components/DrawPage/DrawPage';
+import ExPage from './components/ExPage/ExPage';
+import WelcomePage from './components/WelcomePage/WelcomePage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,12 +17,29 @@ export default function App() {
     <Router>
     <div>
       <Switch>
+
+      <Route exact path="/welcome">
+          <WelcomePage/>
+      </Route>
+
         <Route exact path="/">
           <MainPage/>
         </Route>
+
+        <Route exact path="/exercises" >
+        <ExPage />
+        </Route>
+
         <Route exact path="/report" >
         <ReportPage />
         </Route>
+
+        <Route exact path="/draw" >
+        <DrawPage />
+        </Route>
+
+
+
       </Switch>
       </div>
     </Router>

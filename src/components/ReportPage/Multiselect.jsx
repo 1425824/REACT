@@ -2,19 +2,17 @@ import React, { Component } from "react";
 import axios from 'axios';
 import MultiSelect from "@kenshooui/react-multi-select";
 import "@kenshooui/react-multi-select/dist/style.css";
-import PDFBuilder from "./PDFBuilder";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+
 
 
 export default class MultiSelect1 extends Component {
   constructor(props) {
     super(props);
-    //Es buena practica pero no es necesario
+    //
     this.handleChange = this.handleChange.bind(this);
     this.sendSelectedItems = this.sendSelectedItems.bind(this);
     this.state = {
       items: [],
-      exsToPdf:[],
       selectedItems: []
     };
 
@@ -33,33 +31,27 @@ export default class MultiSelect1 extends Component {
     //console.log(selectedItems);
   }
 
-  sendSelectedItems(e){
-    e.preventDefault();
+  sendSelectedItems(){
+   
     const sItems = { selectedItems : this.state.selectedItems }
-    var ids = [];
+    var ids = "";
 
     for(var i= 0; i < sItems.selectedItems.length; i++){
-      ids.push( sItems.selectedItems[i].id);
+      ids = ids.concat( sItems.selectedItems[i].id, "_" );
     }
     console.log(ids);
   
-    var path =["http://localhost:8000/selected?choices="];
-    var allData=[];
-    ids.forEach((item) => {
+    var path ='http://localhost:8000/selected';
 
-      axios.get([path,item].join("") ) // id
-
+      axios.get(path, {
+        params:  {ids} 
+       })
       .then(res => {
-        console.warn(res.data);
-        allData.push(res.data[0]);
-        this.setState({ exsToPdf: allData});
+        console.warn(res.params);
       })
       .catch(function(response){
         console.log(response);
-      })
-
-    });
-   //console.log(allData);
+      });
    
   }
 
@@ -82,22 +74,6 @@ export default class MultiSelect1 extends Component {
 
       <MultiSelect wrapperClassName="arial"  items={this.state.items} withGrouping='true' selectedItems={this.state.selectedItems} onChange={this.handleChange}></MultiSelect> 
 
-
-      {true &&<PDFDownloadLink
-        document={<PDFBuilder props={this.state.exsToPdf} />}
-        fileName="report.pdf"
-        style={{
-          textDecoration: "none",
-          padding: "10px",
-          color: "#4a4a4a",
-          backgroundColor: "#f2f2f2",
-          border: "1px solid #4a4a4a"
-        }}
-      >
-        {({ blob, url, loading, error }) =>
-          loading ? "Loading document..." : "Download Pdf"
-        }
-      </PDFDownloadLink>}
 
 
     </div>

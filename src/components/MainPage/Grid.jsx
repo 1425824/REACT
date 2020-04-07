@@ -17,7 +17,9 @@ export default class Grid1 extends Component{
           <p className="card_text arial"  >
             lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
           </p>
-          <button className="card_button arial" >Exercicis</button>
+          <button className="card_button arial" >
+            <Link style={{ color:'inherit', textDecoration:'inherit'}} to="/exercises">Exercicis</Link>
+          </button>
         </div>
       </Grid>
 
@@ -47,7 +49,10 @@ export default class Grid1 extends Component{
           <p className="card_text arial"  >
             lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
           </p>
-          <button className="card_button arial"  >Pissarra</button>
+
+          <button className="card_button arial"  > 
+          <Link style={{ color:'inherit', textDecoration:'inherit'}} to="/draw">Pissarra</Link>
+          </button>
         </div>
         </Grid>
 

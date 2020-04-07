@@ -1,0 +1,9 @@
+.change_background{
+    height: 100px;
+    width: 220px;
+    border: 2px solid;
+    border-color: black;
+    margin: 15px;
+    left: 5px;
+    cursor: pointer;
+  }
