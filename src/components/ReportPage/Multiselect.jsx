@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import axios from 'axios';
 import MultiSelect from "@kenshooui/react-multi-select";
 import "@kenshooui/react-multi-select/dist/style.css";
+import Pdf from 'react-to-pdf';
+import ReactHtmlParser from 'react-html-parser';
+const pdf = require('html-pdf');
 
 
-
+const ref = React.createRef();
 export default class MultiSelect1 extends Component {
+
   constructor(props) {
     super(props);
     //
@@ -13,7 +17,8 @@ export default class MultiSelect1 extends Component {
     this.sendSelectedItems = this.sendSelectedItems.bind(this);
     this.state = {
       items: [],
-      selectedItems: []
+      selectedItems: [],
+      output: ''
     };
 
   }
@@ -31,7 +36,7 @@ export default class MultiSelect1 extends Component {
     //console.log(selectedItems);
   }
 
-  sendSelectedItems() {
+  sendSelectedItems(topdf) {
 
     const sItems = { selectedItems: this.state.selectedItems }
     var ids = "";
@@ -48,6 +53,9 @@ export default class MultiSelect1 extends Component {
     })
       .then(res => {
         console.warn(res.params);
+        //console.warn(res.data);
+        this.setState({ output: res.data });
+        //topdf();
       })
       .catch(function (response) {
         console.log(response);
@@ -67,7 +75,7 @@ export default class MultiSelect1 extends Component {
 
           <div className="row">
             <div className="col-md-5" align="right">
-              <a target="_blank" href="/report/pdf" ><button onClick={this.sendSelectedItems} className="btn btn-danger arial">Genera informe PDF</button></a>
+              <a target="_blank"  ><button onClick={this.sendSelectedItems} className="btn btn-danger arial">Genera informe PDF</button></a>
             </div>
           </div>
         </div>
@@ -75,7 +83,14 @@ export default class MultiSelect1 extends Component {
         <MultiSelect wrapperClassName="arial" items={this.state.items} withGrouping='true' selectedItems={this.state.selectedItems} onChange={this.handleChange}></MultiSelect>
 
 
-
+        <Pdf targetRef={ref} filename="report.pdf">
+          {({ toPdf }) => (
+            <button onClick={toPdf}>Generate pdf</button>
+          )}
+        </Pdf>
+        <div ref={ref} style={{width:'21cm', height:'29.7cm' }} >
+          {ReactHtmlParser(this.state.output)}
+        </div>
       </div>
     );
   }

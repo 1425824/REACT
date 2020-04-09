@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
+    "html-pdf": "^2.2.0",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "nodemon": "^2.0.2",
@@ -20,10 +21,12 @@
     "react-canvas-draw": "^1.1.0",
     "react-color": "^2.18.0",
     "react-dom": "^16.13.1",
+    "react-html-parser": "^2.0.2",
     "react-native-web": "^0.12.2",
     "react-responsive-carousel": "^3.1.56",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-to-pdf": "0.0.11"
   },
   "scripts": {
     "start": "react-scripts start",
