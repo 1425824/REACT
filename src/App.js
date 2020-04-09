@@ -5,6 +5,7 @@ import ReportPage from './components/ReportPage/ReportPage';
 import DrawPage from './components/DrawPage/DrawPage';
 import ExPage from './components/ExPage/ExPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
+import RegisterPage from './components/RegisterPage/RegisterPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,10 @@ export default function App() {
 
       <Route exact path="/welcome">
           <WelcomePage/>
+      </Route>
+
+      <Route exact path="/register">
+          <RegisterPage/>
       </Route>
 
         <Route exact path="/">
