@@ -4,7 +4,6 @@ import MultiSelect from "@kenshooui/react-multi-select";
 import "@kenshooui/react-multi-select/dist/style.css";
 import Pdf from 'react-to-pdf';
 import ReactHtmlParser from 'react-html-parser';
-const pdf = require('html-pdf');
 
 
 const ref = React.createRef();
@@ -88,7 +87,7 @@ export default class MultiSelect1 extends Component {
             <button onClick={toPdf}>Generate pdf</button>
           )}
         </Pdf>
-        <div ref={ref} style={{width:'21cm', height:'29.7cm' }} >
+        <div ref={ref} style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: '-1' }} >
           {ReactHtmlParser(this.state.output)}
         </div>
       </div>

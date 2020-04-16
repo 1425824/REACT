@@ -1,18 +1,15 @@
 import React, { Component} from 'react';
 import Header from '../GeneralComponents/Header';
+import NewExForm from './NewExForm';
 import Footer from  '../GeneralComponents/Footer';
-import { Link } from "react-router-dom";
 
 
-export default class ExPage extends Component {
+export default class newExPage extends Component {
     render() {
         return (
         <div>
             <Header />
-            <a >
-                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/exercises/new">Nou Exercici</Link>
-            </a>
-
+            <NewExForm />
             <Footer />
         </div>
         );

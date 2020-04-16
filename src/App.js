@@ -6,6 +6,7 @@ import DrawPage from './components/DrawPage/DrawPage';
 import ExPage from './components/ExPage/ExPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
+import NewExPage from './components/NewExPage/NewExPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -33,6 +34,10 @@ export default function App() {
 
         <Route exact path="/exercises" >
         <ExPage />
+        </Route>
+
+        <Route exact path="/exercises/new" >
+        <NewExPage/>
         </Route>
 
         <Route exact path="/report" >
