@@ -89,7 +89,7 @@ export default class NewExForm extends Component {
 
                         <div className="form-group">
                             <label>Descripció: </label>
-                            <input type="text" className="form-control" placeholder="" name="exDescription" required onChange={this.handleChange} />
+                            <input type="text" size="500" className="form-control" placeholder="" name="exDescription" required onChange={this.handleChange} />
                         </div>
 
                         <div className="form-group">
@@ -99,12 +99,12 @@ export default class NewExForm extends Component {
 
                         <div className="form-group">
                             <label>Materials: </label>
-                            <input type="text" className="form-control" placeholder="" name="exMaterials" required onChange={this.handleChange} />
+                            <input type="text" size="1255" className="form-control" placeholder="" name="exMaterials" required onChange={this.handleChange} />
                         </div>
 
                         <div className="form-group">
                             <label>Observacions: </label>
-                            <input type="text" className="form-control" placeholder="" name="exObservations" required onChange={this.handleChange} />
+                            <input type="text" size="255" className="form-control" placeholder="" name="exObservations" required onChange={this.handleChange} />
                         </div>
 
                         <div className="form-group" >

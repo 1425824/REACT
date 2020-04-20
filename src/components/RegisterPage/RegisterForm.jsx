@@ -58,9 +58,9 @@ export default class RegisterForm extends Component {
         return (
             <div>
 
-                <h1>Registrar nou usuari</h1>
+                <h2>Registrar Usuari</h2>
                 <p>
-                    Omple els següents camps per crear un nou compte
+                    Omple els següents camps per crear un nou compte:
                 </p>
                 {this.state.success === false &&
                     <p className="alert alert-danger" role="alert">
@@ -69,27 +69,29 @@ export default class RegisterForm extends Component {
                 {this.state.success === true &&
                     <p className="alert alert-success" role="alert">
                         Usuari registrat correctament
-             </p>}
+                    </p>}
 
                 {!this.state.success &&
                     <form onSubmit={this.handleSubmit}>
 
-                        <div className="form-group">
-                            <label>E-mail: </label>
-                            <input type="text" className="form-control" placeholder="example@example.com" name="email" required onChange={this.handleChange} />
-                        </div>
+                        <p>
+                            <label for="email" className="floatLabel" >Email</label>
+                            <input size="50" type="text" className="form-control" name="email" required onChange={this.handleChange} />
+                        </p>
 
-                        <div className="form-group">
-                            <label>Nom d'usuari: </label>
-                            <input type="text" className="form-control" placeholder="Username" name="username" required onChange={this.handleChange} />
-                        </div>
+                        <p>
+                            <label for="username" className="floatLabel" >Nom d'usuari </label>
+                            <input size="50" type="text" className="form-control"  name="username" required onChange={this.handleChange} />
+                        </p>
 
-                        <div className="form-group">
-                            <label>Contrasenya: </label>
-                            <input type="password" className="form-control" placeholder="Password" name="password" required onChange={this.handleChange} />
-                        </div>
+                        <p>
+                            <label for="password" className="floatLabel" >Contrasenya</label>
+                            <input size="50" type="password" className="form-control" name="password" required onChange={this.handleChange} />
+                        </p>
+                        <p>
+                        <button type="submit" className="btn btn-primary">Registra</button>
+                        </p>
 
-                        <button type="submit" className="btn btn-primary">Submit</button>
                     </form>}
             </div>
         );

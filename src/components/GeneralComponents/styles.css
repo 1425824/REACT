@@ -169,7 +169,11 @@ font-size: 14px;
 .carousel-cont{
 position: relative;
 }
-
+.carousel-root{
+ 
+  align-self: center;
+  display: flex;
+}
 .carousel-card{
   position: absolute;
   bottom: 200px;
@@ -212,4 +216,168 @@ font-size: 14px;
 padding: 4px;
 padding-left: 25px;
 padding-right: 25px;
+}
+
+.collap{
+  align-self: center;
+  margin-left: 40px;
+  margin-top: 6px;
+  background-color: #fbfbfb;
+  margin-right: 40px;
+  font-size: 16px;
+  padding:10px;
+  padding-left: 25px;
+  
+}
+.collap:hover,.collap-body:hover{
+  cursor: pointer;
+}
+
+.collap-body{
+  margin-left: 40px;
+  margin-top: 30px;
+  background-color: #fbfbfb;
+  margin-right: 40px;
+  font-size: 16px;
+  padding: 10px;
+}
+.collap-content{
+  position: relative;
+  margin-left: 20px;
+  
+}
+
+.green-btn{
+  margin-top: 30px;
+  margin-left: 80%;
+  background-color: #22e96b;
+  border-radius: 12px;
+  padding:8px;
+  color: white;
+}
+
+.collap-img{
+  margin-top: 8px;
+  height: 200px;
+  width: 375px;
+}
+.div1{
+  display: flex;
+  flex-direction: row;
+  
+}
+.divimg{
+  width: 50%;
+}
+.divcontent{
+  width: 50%;
+}
+.lista{
+  margin-bottom: 15px;
+}
+
+.search{
+  width:100%;
+  position: relative;
+  display: flex;
+  margin-top: 1%;
+  margin-left: 40px;
+}
+.searchTerm{
+border: 1px solid #2A3136;
+padding: 5px;
+border-radius: 5px 0 0 5px;
+outline: none;
+color: black;
+
+}
+.searchButton{
+border: 1px solid #2A3136;
+background: #2A3136;
+width: 36px;
+height: 36px;
+cursor: pointer;
+color: #fff;
+font-size: 20px;
+border-radius: 0 5px 5px 0;
+align-content: left;
+margin-left: -10px;
+}
+
+.canvas-container{
+  align-self: center;
+  display: flex;
+}
+.canvas-btns{
+  position: relative;
+  flex-direction: row;
+  margin-left: 40px;
+
+}
+.colorpicker{
+  position: relative;
+  margin-top:0;
+  transform: rotate(180deg);
+  margin-right: 500px;
+  bottom: -40px;
+}
+.canvas-actions{
+  background-color:  #2A3136;
+  border-radius: 12px;
+  padding:5px;
+  font-weight: bold;
+  color: white;
+  border: none;
+
+}
+label{
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: 400;
+  background-color: rgba(255,255,255,0);
+}
+  .floatLabel{
+    position: absolute;
+    top: -14px;
+    background-color: rgba(255,255,255,0.9);
+    font-size: 14px; 
+    margin-left: 40%;
+  
+  }
+
+
+h2{
+  text-align: center;
+}
+p{
+  position: relative;
+  text-align: center;
+}
+
+button[type='submit']{
+  background-color: #2A3136;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 1em;
+  outline: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type='text'],
+input[type='password']{
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 16;
+  padding: .8em .5em;
+  border-radius: 2px;
 }

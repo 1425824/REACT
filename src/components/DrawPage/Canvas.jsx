@@ -18,58 +18,52 @@ export default class Canvas extends Component {
     };
   }
 
-
-
   render() {
     return (
+          <div>
+          <div className="canvas-btns">
 
-      <div>
-        <div >
-
-          <button
-            onClick={() => {
-              if(this.state.imgSrc === 0)
-                this.saveableCanvas1.clear();
-              else if(this.state.imgSrc === 1)
-                this.saveableCanvas2.clear();
-              else
-                this.saveableCanvas3.clear();
-            }}
-          > Clear
-          </button>
+            <button className="canvas-actions"
+              onClick={() => {
+                if(this.state.imgSrc === 0)
+                  this.saveableCanvas1.clear();
+                else if(this.state.imgSrc === 1)
+                  this.saveableCanvas2.clear();
+                else
+                  this.saveableCanvas3.clear();
+              }}
+            > Esborra
+            </button>
 
 
-          <button
-            onClick={() => {
-              if(this.state.imgSrc === 0){
-                this.saveableCanvas1.undo();
-              }
-              else if(this.state.imgSrc === 1){
-                this.saveableCanvas2.undo();
-              }
-              else {
-                this.saveableCanvas3.undo();
-              }
-            }}
-          >
-            Undo
+            <button className="canvas-actions"
+              onClick={() => {
+                if(this.state.imgSrc === 0){
+                  this.saveableCanvas1.undo();
+                }
+                else if(this.state.imgSrc === 1){
+                  this.saveableCanvas2.undo();
+                }
+                else {
+                  this.saveableCanvas3.undo();
+                }
+              }}
+            >
+            Pas enrere
             </button>
 
           <div>
-            <label>Brush-Radius:</label>
-            <input
-              type="number"
-              value={this.state.brushRadius}
+            <label>Mida-Pinzell:</label>
+            <input type="number" value={this.state.brushRadius}
               onChange={e =>
-                this.setState({ brushRadius: parseInt(e.target.value, 10) })
-
-              }
-            />
+                this.setState({ brushRadius: parseInt(e.target.value, 10) })} />
           </div>
-        </div>
+      </div>
 
+     
 
-
+      <div className="canvas-container">
+        
         {this.state.imgSrc === 0 &&
           <div>
             <CanvasDraw
@@ -124,11 +118,7 @@ export default class Canvas extends Component {
 
         </div>
 
-
-
-
-
-
+      </div>
       </div>
     );
   }

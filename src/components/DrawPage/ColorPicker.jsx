@@ -16,10 +16,13 @@ export default class ColorPicker extends React.Component {
   render() {
     return (
       <div>
-      <GithubPicker
-        color={ this.state.background }
-        onChangeComplete={ this.handleChangeComplete }
-      />
+      <div className="colorpicker">
+        <GithubPicker
+          color={ this.state.background }
+          onChangeComplete={ this.handleChangeComplete }
+        />
+      </div>
+
       <Canvas color={this.state.background}/>
       </div>
     );
