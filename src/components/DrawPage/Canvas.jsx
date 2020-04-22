@@ -35,7 +35,6 @@ export default class Canvas extends Component {
             > Esborra
             </button>
 
-
             <button className="canvas-actions"
               onClick={() => {
                 if(this.state.imgSrc === 0){
@@ -52,12 +51,12 @@ export default class Canvas extends Component {
             Pas enrere
             </button>
 
-          <div>
-            <label>Mida-Pinzell:</label>
+            <label className="canvas_brush" >Mida-Pinzell: 
             <input type="number" value={this.state.brushRadius}
               onChange={e =>
                 this.setState({ brushRadius: parseInt(e.target.value, 10) })} />
-          </div>
+            </label>
+          
       </div>
 
      

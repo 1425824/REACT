@@ -59,13 +59,15 @@ export default class Grid1 extends Component{
         <Grid section="config" >
         <div className="card">
           <p className="card_title arial"  >
-            Configuració
+            Proves de nivell
           </p>
-          <img className="logo-box" alt="config_icon" src={require("../img/config.png")}/>
+          <img className="logo-box" alt="config_icon" src={require("../img/test.png")}/>
           <p className="card_text arial"  >
             lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
           </p>
-          <button className="card_button arial" align="center" >Configuració</button>
+          <button className="card_button arial"  > 
+          <Link style={{ color:'inherit', textDecoration:'inherit'}} to="/prova">Fer prova</Link>
+          </button>
         </div>
         </Grid>
     </div>

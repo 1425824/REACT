@@ -10,8 +10,10 @@ export default class Header1 extends Component {
                 <Link to="/"> 
                     <img src={require("../img/itennis.png")} alt="web_logo" className="header-logo" /> 
                 </Link>
-        
-                <a className="header-login arial">Login</a>
+
+                <Link to="/login" className="login-link" >
+                    <a className="header-login arial">Login</a>
+                </Link>
             </div>
         );
     }

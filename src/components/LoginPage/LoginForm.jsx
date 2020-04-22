@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 var bcrypt = require('bcryptjs');
 
-export default class RegisterForm extends Component {
+export default class LoginForm extends Component {
 
     constructor(props) {
         super(props);
@@ -10,10 +10,9 @@ export default class RegisterForm extends Component {
         this.state =
         {
             success: null,
-            message: 'Error durant el registre',
+            message: '',
 
             username: '',
-            email: '',
             password: '',
 
         };
@@ -39,10 +38,9 @@ export default class RegisterForm extends Component {
         event.preventDefault();
 
         var hash = bcrypt.hashSync(this.state.password, 8);
-        axios.get('http://localhost:8000/register', {
+        axios.get('http://localhost:8000/login', {
                 params: {username: this.state.username,
-                        password: hash,
-                        email: this.state.email} })  // data a passar
+                        password: hash } })  // data a passar
         .then(res => {
             console.warn(res.params);
             this.setState({ "success" : true });
@@ -58,9 +56,9 @@ export default class RegisterForm extends Component {
         return (
             <div>
 
-                <h2>Registrar Usuari</h2>
-                <p className="form-labels">
-                    Omple els següents camps per crear un nou compte:
+                <h2>Login Usuari</h2>
+                <p className="form-labels" >
+                    Omple els següents camps per accedir al teu compte:
                 </p>
                 {this.state.success === false &&
                     <p className="alert alert-danger" role="alert">
@@ -75,11 +73,6 @@ export default class RegisterForm extends Component {
                     <form onSubmit={this.handleSubmit}>
 
                         <p className="form-labels" >
-                            <label for="email" className="floatLabel" >Email</label>
-                            <input size="50" type="text" className="form-control" name="email" required onChange={this.handleChange} />
-                        </p>
-
-                        <p className="form-labels" >
                             <label for="username" className="floatLabel" >Nom d'usuari </label>
                             <input size="50" type="text" className="form-control"  name="username" required onChange={this.handleChange} />
                         </p>
@@ -89,7 +82,7 @@ export default class RegisterForm extends Component {
                             <input size="50" type="password" className="form-control" name="password" required onChange={this.handleChange} />
                         </p>
                         <p className="form-labels" >
-                        <button type="submit" className="btn btn-primary">Registra</button>
+                        <button type="submit" className="btn btn-primary">Entrar</button>
                         </p>
 
                     </form>}

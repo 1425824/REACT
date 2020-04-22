@@ -62,6 +62,7 @@
   right: 200px;
   top: 40px;
   align-self: right;
+  text-decoration: none;
 }
 .arial {
   font-family: Arial, Helvetica, sans-serif;
@@ -243,7 +244,8 @@ padding-right: 25px;
 }
 .collap-content{
   position: relative;
-  margin-left: 20px;
+  text-align: left;
+  margin-left: -28%;
   
 }
 
@@ -271,6 +273,7 @@ padding-right: 25px;
 }
 .divcontent{
   width: 50%;
+  align-content: left;
 }
 .lista{
   margin-bottom: 15px;
@@ -311,15 +314,23 @@ margin-left: -10px;
 .canvas-btns{
   position: relative;
   flex-direction: row;
-  margin-left: 40px;
+  margin-left: 5%;
+  margin-bottom: 5px;
 
 }
+.canvas_brush{
+  position: relative;
+  margin-left: 1%;
+  padding: 5px;
+  top: 5px;
+}
+
 .colorpicker{
   position: relative;
   margin-top:0;
   transform: rotate(180deg);
   margin-right: 500px;
-  bottom: -40px;
+  bottom: -23px;
 }
 .canvas-actions{
   background-color:  #2A3136;
@@ -328,6 +339,7 @@ margin-left: -10px;
   font-weight: bold;
   color: white;
   border: none;
+  cursor: pointer;
 
 }
 label{
@@ -356,6 +368,10 @@ h2{
 }
 p{
   position: relative;
+}
+
+.form-labels{
+  position: relative;
   text-align: center;
 }
 
@@ -380,4 +396,73 @@ input[type='password']{
   font-size: 16;
   padding: .8em .5em;
   border-radius: 2px;
+}
+
+.login-link{
+  text-decoration: none;
+  color:  white;
+}
+
+.test_exp{
+  width: 80%;
+  margin-left: 5% ;
+  margin-right: 5%;
+}
+
+.tecnica_input{
+  font-size: 14px;
+}
+
+.test_table{
+  margin-left: 28%;
+}
+
+td{
+  text-align: center;
+}
+th{
+  color:white;
+  background-color: #22e96b;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+
+}
+
+.moviment1{
+  background-color: #f2f2f2;
+  padding-right: 8px;
+  padding-left: 8px ;
+}
+.moviment2{
+  background-color: #f2f2f2;
+  padding-right: 8px;
+  padding-left: 8px ;
+}
+.msg_div{
+  text-align: center;
+}
+.succes_msg{
+  color: #270;
+  background-color: #DFF2BF;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+}
+.fail_msg{
+  color: #D8000C;
+  background-color: #FFBABA;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.stepper{
+  width: 90%;
+  align-self: center;
+  margin-left: 5%;
+
 }
