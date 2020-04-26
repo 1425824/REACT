@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-var bcrypt = require('bcryptjs');
+import { Redirect } from "react-router-dom";
+var crypto = require('crypto');
 
 export default class LoginForm extends Component {
 
@@ -10,10 +11,11 @@ export default class LoginForm extends Component {
         this.state =
         {
             success: null,
-            message: '',
+            message: "Nom d'usuari o contrasenya incorrectes" ,
 
             username: '',
             password: '',
+            redirect: false,
 
         };
 
@@ -36,17 +38,23 @@ export default class LoginForm extends Component {
     handleSubmit(event) {
         
         event.preventDefault();
+        var hash = crypto.createHash('sha256').update(this.state.password).digest('hex');
 
-        var hash = bcrypt.hashSync(this.state.password, 8);
         axios.get('http://localhost:8000/login', {
                 params: {username: this.state.username,
                         password: hash } })  // data a passar
         .then(res => {
-            console.warn(res.params);
-            this.setState({ "success" : true });
+            console.warn(res.data); 
+            if(res.data === 1){
+                //redireccion a (/)
+                this.setState({ redirect: true });
+            }
+            else 
+                //console.warn(this.state.success);
+                this.setState({ success: false }); 
+                //console.warn(res.data); 
         }).catch(e=>{
-            this.setState({ "message" : e.response.message });
-            this.setState({ "success" : false });
+
         });
 
 
@@ -60,26 +68,27 @@ export default class LoginForm extends Component {
                 <p className="form-labels" >
                     Omple els següents camps per accedir al teu compte:
                 </p>
+
                 {this.state.success === false &&
-                    <p className="alert alert-danger" role="alert">
-                        {this.state.message}
-                    </p>}
-                {this.state.success === true &&
-                    <p className="alert alert-success" role="alert">
-                        Usuari registrat correctament
-                    </p>}
+
+                    <p className="fail_msg" > {this.state.message} </p>
+                }
+
+                {this.state.redirect &&
+                <Redirect to="/" ></Redirect>
+                }
 
                 {!this.state.success &&
                     <form onSubmit={this.handleSubmit}>
 
                         <p className="form-labels" >
                             <label for="username" className="floatLabel" >Nom d'usuari </label>
-                            <input size="50" type="text" className="form-control"  name="username" required onChange={this.handleChange} />
+                            <input size="50" type="text" className="form-control input-forms"  name="username" required onChange={this.handleChange} />
                         </p>
 
                         <p className="form-labels" >
                             <label for="password" className="floatLabel" >Contrasenya</label>
-                            <input size="50" type="password" className="form-control" name="password" required onChange={this.handleChange} />
+                            <input size="50" type="password" className="form-control input-forms" name="password" required onChange={this.handleChange} />
                         </p>
                         <p className="form-labels" >
                         <button type="submit" className="btn btn-primary">Entrar</button>

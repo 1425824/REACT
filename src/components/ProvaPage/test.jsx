@@ -16,7 +16,7 @@ export default class TestForm extends Component {
             fase: 0,
             tecnica: new Array(20).fill(0),
             control:new Array(20).fill(0),
-            total: new Array(20).fill(0) ,
+            total: new Array(20).fill(0),
 
         };
 
@@ -75,8 +75,11 @@ export default class TestForm extends Component {
     }
 
     suma(a,b){
-
         return a+b;
+    }
+
+    refreshPage(){
+        window.location.reload(false);
     }
 
 
@@ -87,8 +90,10 @@ export default class TestForm extends Component {
                 <h2>Prova de nivell 1 (FET)</h2>
                 <p className="test_exp">
                     La prova consisteix en executar un seguit de cops dirigits a diferents zones de la pista. A excepció del servei, la pilota la posarà en joc l'examinador / tècnic. 
-                    Es realitzaran 4 repeticions de cada cop. Cada encert afegirà 1pt a la nota tècnica (1-10) basada en la apreciació del tècnic.
+                    Es realitzaran 4 repeticions de cada cop. Cada encert afegirà 1pt a la nota tècnica (1-10) basada en la apreciació del tècnic. Per superar la prova es necessitarà obtenir una valoració TÈCNICA superior a 80pts i una puntuació total superior a 120pts.
                 </p>
+
+                <button className="newtest_btn" onClick={this.refreshPage}>Nova prova</button>
 
 
                 { this.state.fase === 0 &&
@@ -106,26 +111,26 @@ export default class TestForm extends Component {
                             <td rowspan="4" className="moviment1" >SERVEI    </td>
                                 <td rowspan="2" className="moviment2" >Esquerre   </td>
                                     <td>1er servei</td>
-                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 0)}  /></td>
+                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 0)} value={this.state.tecnica[0]}   /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[0] < 0 ? "nº encerts":this.state.control[0] } onChange={ (e)=>this.handleSelect(e, 0) }  /> </td>
                                     <td>{this.state.total[0] }</td>
                         </tr>
                                 <tr>
                                     <td>2on servei</td>
-                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 1)}  /></td>
+                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 1)} value={this.state.tecnica[1]} /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[1] < 0 ? "nº encerts":this.state.control[1] } onChange={ (e)=>this.handleSelect(e, 1) }   /> </td>
                                     <td>{this.state.total[1] }</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2" className="moviment2" >Dreta   </td>
                                         <td>1er servei</td>
-                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 2)}  /></td>
+                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 2)}  value={this.state.tecnica[2]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[2] < 0 ? "nº encerts":this.state.control[2] } onChange={ (e)=>this.handleSelect(e, 2) }  /> </td>
                                         <td>{this.state.total[2] } </td>
                                 </tr>
                                     <tr>
                                         <td>2on servei</td>
-                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 3)}  /></td>
+                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 3)}  value={this.state.tecnica[3]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]}  placeholder={this.state.control[3] < 0 ? "nº encerts":this.state.control[3] } onChange={ (e)=>this.handleSelect(e, 3) } /> </td>
                                         <td> {this.state.total[3] } </td>
                                     </tr>
@@ -135,26 +140,26 @@ export default class TestForm extends Component {
                             <td rowspan="4" className="moviment1" >DRETA   </td>
                                 <td rowspan="2" className="moviment2" >Creuada   </td>
                                     <td>Llarga</td>
-                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 4)} /></td>
+                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 4)} value={this.state.tecnica[4]} /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[4] < 0 ? "nº encerts":this.state.control[4] } onChange={ (e)=>this.handleSelect(e, 4) }  /> </td>
                                     <td>{this.state.total[4] }</td>
                         </tr>
                                 <tr>
                                     <td>Curta</td>
-                                    <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 5)}  /></td>
+                                    <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 5)} value={this.state.tecnica[5]}  /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[5] < 0 ? "nº encerts":this.state.control[5] } onChange={ (e)=>this.handleSelect(e, 5) }   /> </td>
                                     <td>{this.state.total[5] }</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2" className="moviment2" >Paral·lela   </td>
                                         <td>Llarga</td>
-                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 6)}  /></td>
+                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 6)}  value={this.state.tecnica[6]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[6] < 0 ? "nº encerts":this.state.control[6] } onChange={ (e)=>this.handleSelect(e, 6) }  /> </td>
                                         <td>{this.state.total[6] } </td>
                                 </tr>
                                     <tr>
                                         <td>Curta</td>
-                                        <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 7)}  /></td>
+                                        <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 7)}  value={this.state.tecnica[7]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]}  placeholder={this.state.control[7] < 0 ? "nº encerts":this.state.control[7] } onChange={ (e)=>this.handleSelect(e, 7) } /> </td>
                                         <td> {this.state.total[7] } </td>
                                     </tr>
@@ -177,26 +182,26 @@ export default class TestForm extends Component {
                             <td rowspan="4" className="moviment1" >REVÉS    </td>
                                 <td rowspan="2" className="moviment2" >Creuat  </td>
                                     <td>LLarg</td>
-                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 8)}  /></td>
+                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 8)}  value={this.state.tecnica[8]} /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[8] < 0 ? "nº encerts":this.state.control[8] } onChange={ (e)=>this.handleSelect(e, 8) }  /> </td>
                                     <td>{this.state.total[8] }</td>
                         </tr>
                                 <tr>
                                     <td>Curt</td>
-                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 9)}  /></td>
+                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 9)} value={this.state.tecnica[9]} /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[9] < 0 ? "nº encerts":this.state.control[9] } onChange={ (e)=>this.handleSelect(e, 9) }   /> </td>
                                     <td>{this.state.total[9] }</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2" className="moviment2" >Paral·lel   </td>
                                         <td>Llarg</td>
-                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 10)}  /></td>
+                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 10)}  value={this.state.tecnica[10]}/></td>
                                         <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[10] < 0 ? "nº encerts":this.state.control[10] } onChange={ (e)=>this.handleSelect(e, 10) }  /> </td>
                                         <td>{this.state.total[10] } </td>
                                 </tr>
                                     <tr>
                                         <td>Curt</td>
-                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 11)}  /></td>
+                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 11)}  value={this.state.tecnica[11]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]}  placeholder={this.state.control[11] < 0 ? "nº encerts":this.state.control[11] } onChange={ (e)=>this.handleSelect(e, 11) } /> </td>
                                         <td> {this.state.total[11] } </td>
                                     </tr>
@@ -206,26 +211,26 @@ export default class TestForm extends Component {
                             <td rowspan="4" className="moviment1" >VOLEES  </td>
                                 <td rowspan="2" className="moviment2" >Dreta   </td>
                                     <td>Llarga</td>
-                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 12)} /></td>
+                                    <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 12)} value={this.state.tecnica[12]} /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[12] < 0 ? "nº encerts":this.state.control[12] } onChange={ (e)=>this.handleSelect(e, 12) }  /> </td>
                                     <td>{this.state.total[12] }</td>
                         </tr>
                                 <tr>
                                     <td>Curta</td>
-                                    <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 13)}  /></td>
+                                    <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 13)}  value={this.state.tecnica[13]} /></td>
                                     <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[13] < 0 ? "nº encerts":this.state.control[13] } onChange={ (e)=>this.handleSelect(e, 13) }   /> </td>
                                     <td>{this.state.total[13] }</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2" className="moviment2" >Revés   </td>
                                         <td>Llarga</td>
-                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 14)}  /></td>
+                                        <td><input size="2" type="number" required onChange= {(e) => this.handleChange(e, 14)}  value={this.state.tecnica[14]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]} placeholder={this.state.control[14] < 0 ? "nº encerts":this.state.control[14] } onChange={ (e)=>this.handleSelect(e, 14) }  /> </td>
                                         <td>{this.state.total[14] } </td>
                                 </tr>
                                     <tr>
                                         <td>Curta</td>
-                                        <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 15)}  /></td>
+                                        <td><input size="2" type="number"  required onChange= {(e) => this.handleChange(e, 15)}  value={this.state.tecnica[15]} /></td>
                                         <td><Dropdown options={[0,1,2,3,4]}  placeholder={this.state.control[7] < 0 ? "nº encerts":this.state.control[15] } onChange={ (e)=>this.handleSelect(e, 15) } /> </td>
                                         <td> {this.state.total[15] } </td>
                                     </tr>
@@ -274,10 +279,13 @@ export default class TestForm extends Component {
                                    
                             </tbody> 
                         </Table>
-                        }           
-
+                        } 
 
                         <div className="msg_div">
+                        { this.state.total < 0 ? 0:this.state.total &&
+                        <p><strong >Tècnica (min. 80pts): {this.state.tecnica.reduce(function(a,b) {return a+b;}) }  </strong> </p>
+                        }
+
                         { this.state.total < 0 ? 0:this.state.total &&
                         <p><strong >Total: {this.state.total.reduce(function(a,b) {return a+b;}) } /240 </strong> </p>
                         }

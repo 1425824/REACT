@@ -389,8 +389,7 @@ button[type='submit']{
   cursor: pointer;
 }
 
-input[type='text'],
-input[type='password']{
+.input-forms{
   background: #fff;
   border: 1px solid #dbdbdb;
   font-size: 16;
@@ -465,4 +464,14 @@ tr:nth-child(even){
   align-self: center;
   margin-left: 5%;
 
+}
+
+.newtest_btn{
+  margin-left: 80%;
+  background-color: #22e96b;
+  border-radius: 8px;
+  padding:6px;
+  color: white;
+  border: none;
+  font-size: 14px;
 }

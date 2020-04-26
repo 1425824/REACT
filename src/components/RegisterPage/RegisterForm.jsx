@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-var bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+
 
 export default class RegisterForm extends Component {
 
@@ -37,8 +38,8 @@ export default class RegisterForm extends Component {
     handleSubmit(event) {
         
         event.preventDefault();
-
-        var hash = bcrypt.hashSync(this.state.password, 8);
+        var hash = crypto.createHash('sha256').update(this.state.password).digest('hex');
+        //var hash = bcrypt.hashSync(this.state.password, 8);
         axios.get('http://localhost:8000/register', {
                 params: {username: this.state.username,
                         password: hash,
@@ -76,17 +77,17 @@ export default class RegisterForm extends Component {
 
                         <p className="form-labels" >
                             <label for="email" className="floatLabel" >Email</label>
-                            <input size="50" type="text" className="form-control" name="email" required onChange={this.handleChange} />
+                            <input size="50" type="text" className="form-control input-forms" name="email" required onChange={this.handleChange} />
                         </p>
 
                         <p className="form-labels" >
                             <label for="username" className="floatLabel" >Nom d'usuari </label>
-                            <input size="50" type="text" className="form-control"  name="username" required onChange={this.handleChange} />
+                            <input size="50" type="text" className="form-control input-forms"  name="username" required onChange={this.handleChange} />
                         </p>
 
                         <p className="form-labels" >
                             <label for="password" className="floatLabel" >Contrasenya</label>
-                            <input size="50" type="password" className="form-control" name="password" required onChange={this.handleChange} />
+                            <input size="50" type="password" className="form-control input-forms" name="password" required onChange={this.handleChange} />
                         </p>
                         <p className="form-labels" >
                         <button type="submit" className="btn btn-primary">Registra</button>

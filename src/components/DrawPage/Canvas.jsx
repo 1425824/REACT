@@ -62,40 +62,43 @@ export default class Canvas extends Component {
      
 
       <div className="canvas-container">
-        
+            
         {this.state.imgSrc === 0 &&
           <div>
-            <CanvasDraw
+            
+            <CanvasDraw hideGrid
               ref={canvasDraw => (this.saveableCanvas1 = canvasDraw)}
               brushColor={this.props.color}
               brushRadius={this.state.brushRadius}
-              lazyRadius={1} imgSrc={bgs[0]}
+              lazyRadius={1} 
               canvasHeight={450} canvasWidth={800}
             />
+            <img src={bgs[0]} style={{zIndex: -1, marginTop:'-60%', height:'430px', width:'800px' }} ></img>
           </div>
         }
         {this.state.imgSrc === 1 &&
           <div>
-            <CanvasDraw
+            <CanvasDraw hideGrid
               ref={canvasDraw => (this.saveableCanvas2 = canvasDraw)}
               brushColor={this.props.color}
               brushRadius={this.state.brushRadius}
-              lazyRadius={1} imgSrc={bgs[1]}
+              lazyRadius={1} 
               canvasHeight={450} canvasWidth={800}
             />
-
+            <img src={bgs[1]} style={{zIndex: -1, marginTop:'-60%', height:'430px', width:'800px' }} ></img>
           </div>
         }
 
         {this.state.imgSrc === 2 &&
           <div>
-            <CanvasDraw
+            <CanvasDraw hideGrid
               ref={canvasDraw => (this.saveableCanvas3 = canvasDraw)}
               brushColor={this.props.color}
               brushRadius={this.state.brushRadius}
-              lazyRadius={1} imgSrc={bgs[2]}
+              lazyRadius={1} 
               canvasHeight={450} canvasWidth={800}
             />
+            <img src={bgs[2]} style={{zIndex: -1, marginTop:'-60%', height:'430px', width:'800px' }} ></img>
           </div>
         }
 

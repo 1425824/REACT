@@ -61,6 +61,11 @@ export default class MultiSelect1 extends Component {
       });
 
   }
+  async generatePDF(pdf){
+    await this.sendSelectedItems();
+    setTimeout(() => pdf(), 100);
+    //await pdf();
+  }
 
 
   render() {
@@ -68,28 +73,23 @@ export default class MultiSelect1 extends Component {
     //console.log(items);
     return (
       <div>
+        <div ref={ref} style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: -1 }} >
+          {ReactHtmlParser(this.state.output)}
+        </div>
+        <div style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: -1 , backgroundColor: '#fff' }} > </div>
 
-        <div className="container">
+        <div className="container" style={{backgroundColor: '#fff'}}>
           <h3 align="center" className="arial" >Generador d'informes</h3><br />
-
-          <div className="row">
-            <div className="col-md-5" align="right">
-              <a target="_blank"  ><button onClick={this.sendSelectedItems} className="btn btn-danger arial">Genera informe PDF</button></a>
-            </div>
-          </div>
         </div>
 
         <MultiSelect wrapperClassName="arial" items={this.state.items} withGrouping='true' selectedItems={this.state.selectedItems} onChange={this.handleChange}></MultiSelect>
 
-
         <Pdf targetRef={ref} filename="report.pdf">
           {({ toPdf }) => (
-            <button onClick={toPdf}>Generate pdf</button>
+            <button className="newtest_btn" style={{marginTop:'10px'}} onClick={() => this.generatePDF(toPdf)} >Genera informe PDF</button>
           )}
         </Pdf>
-        <div ref={ref} style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: '-1' }} >
-          {ReactHtmlParser(this.state.output)}
-        </div>
+       
       </div>
     );
   }
