@@ -145,7 +145,7 @@ font-size: 14px;
   border-radius: 4px;
   font-size: 18px;
   left: 50%;
-  margin-left: -70px;
+  margin-left: -60px;
   top: 75%;
   
   padding: 6px 20px;
@@ -474,4 +474,15 @@ tr:nth-child(even){
   color: white;
   border: none;
   font-size: 14px;
+}
+
+.newEx_input{
+  font-size: 14px;
+  width: 100%;
+  position: relative;
+}
+.newEx_form{
+  width: 100%;
+  align-content: row;
+  margin-left: 3%;
 }

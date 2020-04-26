@@ -64,10 +64,10 @@ export default class NewExForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className="newEx_form">
 
-                <h1>Registrar nou exercici</h1>
-                <p>
+                <h1 className="form-labels" >Registrar nou exercici</h1>
+                <p className="form-labels" >
                     Omple els següents camps per afegir un nou exercici al repositori
                 </p>
                 {this.state.success === false &&
@@ -81,39 +81,45 @@ export default class NewExForm extends Component {
 
                 {!this.state.success &&
                     <form onSubmit={this.handleSubmit}>
+                        <div className="newEx_form" >
 
-                        <div className="form-group">
-                            <label>Nom de l'exercici: </label>
-                            <input type="text" className="form-control" placeholder="" name="exName" required onChange={this.handleChange} />
-                        </div>
-
-                        <div className="form-group">
-                            <label>Descripció: </label>
-                            <input type="text" size="500" className="form-control" placeholder="" name="exDescription" required onChange={this.handleChange} />
-                        </div>
-
-                        <div className="form-group">
-                            <label>Temps estimat(min): </label>
-                            <input type="text" className="form-control" placeholder="" name="exEstimatedTime" required onChange={this.handleChange} />
-                        </div>
-
-                        <div className="form-group">
-                            <label>Materials: </label>
-                            <input type="text" size="1255" className="form-control" placeholder="" name="exMaterials" required onChange={this.handleChange} />
-                        </div>
-
-                        <div className="form-group">
-                            <label>Observacions: </label>
-                            <input type="text" size="255" className="form-control" placeholder="" name="exObservations" required onChange={this.handleChange} />
-                        </div>
-
-                        <div className="form-group" >
-                            <label>Tipologia: </label>
-                            <TipSelect name="exTipology" getTipology={this.getTipology}  />
-                        </div>
+                        
+                            <p >Nom de l'exercici: </p>
+                            <input type="text" size="100" placeholder="" className="input-forms" name="exName" required onChange={this.handleChange} />
                         
 
+                    
+                            <p   >Descripció: </p>
+                            <textarea type="text" rows="10" cols="100"  placeholder="" className="input-forms" name="exDescription" required onChange={this.handleChange} />
+                        
+
+                        
+                            <p  >Temps estimat(min): </p>
+                            <input type="text"  placeholder="" className="input-forms" name="exEstimatedTime" required onChange={this.handleChange} />
+                        
+
+                      
+                            <p >Materials: </p>
+                            <textarea type="text" rows="10" cols="100" placeholder="" className="input-forms" name="exMaterials" required onChange={this.handleChange} />
+                        
+
+                   
+                            <p  >Observacions: </p>
+                            <textarea type="text" rows="10" cols="100"  placeholder="" className="input-forms" name="exObservations" required onChange={this.handleChange} />
+                       
+
+                            <div style={{width:500}} >
+                                <p  >Tipologia: </p>
+                                <TipSelect name="exTipology" getTipology={this.getTipology}  />
+                            </div>
+
+                        <br></br>
+                        </div>
+
+                        <div className="form-labels" >
                         <button type="submit" className="btn btn-primary">Finalitza</button>
+                        </div>
+                        
                     </form>}
             </div>
         );
