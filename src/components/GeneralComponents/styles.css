@@ -40,6 +40,7 @@
 .header1 {
   background-color: #2A3136;
   height: 100px;
+  width: 100%;
   color: white;
   position: relative;
 }
@@ -48,6 +49,7 @@
   height: 100px;
   color: white;
   position: static;
+  width: 100%;
 }
 
 .header-logo{
