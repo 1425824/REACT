@@ -9,7 +9,7 @@ export default class ReportPage extends Component {
     render() {
       //console.log(items);
         return (
-          <div>
+          <div >
             <Header />
             <MultiSelect />
             <Footer />

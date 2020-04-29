@@ -62,6 +62,7 @@ export default class MultiSelect1 extends Component {
 
   }
   async generatePDF(pdf){
+    await window.scrollTo(0, 0);
     await this.sendSelectedItems();
     setTimeout(() => pdf(), 100);
     //await pdf();
@@ -72,11 +73,15 @@ export default class MultiSelect1 extends Component {
 
     //console.log(items);
     return (
-      <div>
-        <div ref={ref} style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: -1 }} >
-          {ReactHtmlParser(this.state.output)}
+      <div style={{width: window.innerWidth, height: window.innerHeight }} >
+
+        <div style={{width: window.innerWidth, height: window.innerHeight , top:0, overflow:'hidden', position:'absolute' , zIndex:-1}} >
+          <div ref={ref} style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: -1 }} >
+            {ReactHtmlParser(this.state.output)}
+          </div>
         </div>
-        <div style={{width:'21cm', height:'29.7cm' , position:'absolute', top:'0px', zIndex: -1 , backgroundColor: '#fff' }} > </div>
+
+        <div style={{width:window.innerWidth, height:window.innerHeight , position:'absolute', top:'0px', zIndex: -1 , backgroundColor: '#fff' }} > </div>
 
         <div className="container" style={{backgroundColor: '#fff'}}>
           <h3 align="center" className="arial" >Generador d'informes</h3><br />
@@ -86,7 +91,7 @@ export default class MultiSelect1 extends Component {
 
         <Pdf targetRef={ref} filename="report.pdf">
           {({ toPdf }) => (
-            <button className="newtest_btn" style={{marginTop:'10px'}} onClick={() => this.generatePDF(toPdf)} >Genera informe PDF</button>
+            <button className="newtest_btn" style={{marginTop:'10px', zIndex:99 }} onClick={() => this.generatePDF(toPdf)} >Genera informe PDF</button>
           )}
         </Pdf>
        
