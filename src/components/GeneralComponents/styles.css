@@ -61,11 +61,21 @@
 .header-login{
   position: absolute;
   font-size: 18px;
-  right: 200px;
+  right: 20%;
   top: 40px;
   align-self: right;
   text-decoration: none;
 }
+
+.header-dash{
+  position: absolute;
+  font-size: 18px;
+  right: 50%;
+  top: 40px;
+  align-self: right;
+  text-decoration: none;
+}
+
 .arial {
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -23,7 +23,7 @@ export default function App() {
     <div>
       <Switch>
 
-      <Route exact path="/welcome">
+      <Route exact path="/">
           <WelcomePage/>
       </Route>
 
@@ -35,7 +35,7 @@ export default function App() {
           <RegisterPage/>
       </Route>
 
-        <Route exact path="/">
+        <Route exact path="/dashboard"> 
           <MainPage/>
         </Route>
 

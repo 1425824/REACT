@@ -75,7 +75,7 @@ export default class LoginForm extends Component {
                 }
 
                 {this.state.redirect &&
-                <Redirect to="/" ></Redirect>
+                <Redirect to="/dashboard" ></Redirect>
                 }
 
                 {!this.state.success &&

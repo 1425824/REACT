@@ -15,7 +15,7 @@ export default class Grid1 extends Component{
           </p>
           <img className="logo-box" alt="ex_icon" src={require("../img/ej icon.png")}/>
           <p className="card_text arial"  >
-            lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
+            Consulta el banc d'exercicis. Jocs i exercicis per a totes les edats i nivells.
           </p>
           <button className="card_button arial" >
             <Link style={{ color:'inherit', textDecoration:'inherit'}} to="/exercises">Exercicis</Link>
@@ -30,7 +30,7 @@ export default class Grid1 extends Component{
           </p>
           <img className="logo-box" alt="reports_icon" src={require("../img/informes.png")}/>
           <p className="card_text arial"  >
-            lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
+            Selecciona exercicis i confecciona el teu propi pla d'entrenament. (Descarregable en format PDF)
           </p>
           
           <button  className="card_button arial" > 
@@ -47,7 +47,7 @@ export default class Grid1 extends Component{
           </p>
           <img className="logo-box" alt="draw_icon" src={require("../img/draw.png")}/>
           <p className="card_text arial"  >
-            lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
+            Complementa les explicacions tècniques i tàctiques amb aquesta eina de dibuix.
           </p>
 
           <button className="card_button arial"  > 
@@ -63,7 +63,7 @@ export default class Grid1 extends Component{
           </p>
           <img className="logo-box" alt="config_icon" src={require("../img/test.png")}/>
           <p className="card_text arial"  >
-            lorem ipsum bla bla bla lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla
+            Comprova el teu nivell en pista realitzant les proves de nivell oficials de la Federació Catalana de Tennis (FCT).
           </p>
           <button className="card_button arial"  > 
           <Link style={{ color:'inherit', textDecoration:'inherit'}} to="/prova">Fer prova</Link>
