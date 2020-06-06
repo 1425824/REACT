@@ -35,7 +35,7 @@ export default class MultiSelect1 extends Component {
     //console.log(selectedItems);
   }
 
-  sendSelectedItems(topdf) {
+  sendSelectedItems() {
 
     const sItems = { selectedItems: this.state.selectedItems }
     var ids = "";
@@ -43,7 +43,7 @@ export default class MultiSelect1 extends Component {
     for (var i = 0; i < sItems.selectedItems.length; i++) {
       ids = ids.concat(sItems.selectedItems[i].id, "_");
     }
-    console.log(ids);
+    //console.log(ids);
 
     var path = 'http://localhost:8000/selected';
 
@@ -51,7 +51,7 @@ export default class MultiSelect1 extends Component {
       params: { ids }
     })
       .then(res => {
-        console.warn(res.params);
+        //console.warn(res.params);
         //console.warn(res.data);
         this.setState({ output: res.data });
         //topdf();
@@ -62,9 +62,12 @@ export default class MultiSelect1 extends Component {
 
   }
   async generatePDF(pdf){
+    var pdftime = new Date();
     await window.scrollTo(0, 0);
     await this.sendSelectedItems();
     setTimeout(() => pdf(), 100);
+
+    console.warn( Math.abs(new Date() - pdftime ) )
     //await pdf();
   }
 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Collapsible from 'react-collapsible';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
+import Dropdown from 'react-dropdown';
 
 export default class ExPage extends Component {
     constructor(props) {
@@ -16,26 +17,40 @@ export default class ExPage extends Component {
             observacions: [],
             duracio: [],
             imgs: ["init"],
-
+            tipos:[],
+            selected:'',
             tempTrigger: [],
             tempDes: [],
             tempMats: [],
             tempObs: [],
             tempImgs: [],
             tempDur: [],
+            tipologies:[],
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.selectip = this.selectip.bind();
     }
 
 
     componentDidMount() {
+        var apiTime = new Date();
+
         axios.get('http://localhost:8000/exs')
             .then(res => {
                 this.setState({ trigger: res.data.map((item) => item.label),
-                                tempTrigger: res.data.map((item) => item.label)});
+                                tempTrigger: res.data.map((item) => item.label),
+                                tipos: res.data.map((item) => item.group)});
                 //console.warn(res.data);
             })
+
+        axios.get('http://localhost:8000/tipologies')
+        .then(res => {
+            var list = res.data.map((item) => item);
+            //console.warn(list);
+            
+            this.setState({ tipologies: ['Totes'].concat(list) });
+        })
 
         axios.get('http://localhost:8000/exlist')
             .then(res => {
@@ -54,6 +69,8 @@ export default class ExPage extends Component {
                     tempImgs: res.data.map((item) => item.exImage),
                 });
             })
+
+            console.warn( Math.abs(apiTime - new Date()) )
     }
 
     handleChange(event) {
@@ -101,19 +118,68 @@ export default class ExPage extends Component {
 
     }
 
-
+    selectip = (event) => {
+        var filteredExs = [],des = [], mat = [], obs = [], dur = [], img = [];
+        if (event.value == 'Totes'){
+            
+                filteredExs =  this.state.trigger;
+                des = this.state.descriptions;
+                mat = this.state.materials;
+                obs = this.state.observacions;
+                img = this.state.imgs;
+                dur = this.state.duracio;
+            
+        }
+        //console.warn(event)
+        for (var i = 0; i < this.state.trigger.length; i++) {
+            if (event.value == this.state.tipos[i]){
+                filteredExs.push(this.state.trigger[i]);
+                des.push(this.state.descriptions[i]);
+                mat.push(this.state.materials[i]);
+                obs.push(this.state.observacions[i]);
+                dur.push(this.state.duracio[i]);
+                img.push(this.state.imgs[i]);
+            }
+        
+        }
+        this.setState({ selected: event.value,
+            tempTrigger : filteredExs,
+            tempDes : des,
+            tempMats : mat,
+            tempObs : obs,
+            tempImgs : img,
+            tempDur : dur
+        });
+    }
 
 
     render() {
+        const defaultOption = this.state.selected;
         return (
             <div>
                 <Header />
-                <div className="search">
+                <div className="search" style={{flexDirection:'row'}} >
                     <input className="searchTerm" type="text" size="100" name="search" placeholder="" onChange={this.handleChange} ></input>
                     <button type="submit" className="searchButton" >
                         <SearchIcon ></SearchIcon>
                     </button>
+                    
                 </div>
+                <div style={{flexDirection:'row', display:'flex', marginLeft:'5%' }}>
+                    <p>Tipologia: </p> 
+                    <Dropdown  style={{marginLeft: '5%', top: '-5%' }} className="tipDrop" 
+                    options={this.state.tipologies}
+                    onChange={this.selectip}
+                    value={defaultOption}
+                    placeholder="Selecciona tipologia.."
+                    > </Dropdown>
+                </div>
+                {this.state.tempTrigger.length === 0 &&
+                <div style={{height:'400px'}}>
+                    <p style={{marginLeft:'10%', top: '10%', color: 'lightgrey'}} >No hi ha exercicis registrats per aquesta tipologia.</p>
+                </div>
+
+                }
 
                 <div className="lista">
                 {this.state.tempTrigger.map((item, index) => {
@@ -121,14 +187,14 @@ export default class ExPage extends Component {
                         <Collapsible trigger={this.state.trigger.length > 0 ? item : ""} className="collap" openedClassName="collap-body">
                             <div className="div1" >
                                 <div className="divimg"> 
-                                    <img src={this.state.imgs[index]} alt="collap-img" className="collap-img"  /> 
+                                    <img src={this.state.tempImgs[index]} alt="collap-img" className="collap-img"  /> 
                                 </div>
 
                                 <div  className="divcontent">
-                                    <p className="collap-content"><b>Duració:</b> {this.state.duracio.length > 0 ? this.state.duracio[index] : ""}min.</p>
-                                    <p className="collap-content"><b>Descripció:</b> {this.state.descriptions.length > 0 ? this.state.descriptions[index] : ""}</p>
-                                    <p className="collap-content"><b>Material:</b> {this.state.materials.length > 0 ? this.state.materials[index] : ""}</p>
-                                    <p className="collap-content"><b>Observacions:</b> {this.state.observacions.length > 0 ? this.state.observacions[index] : ""}</p>
+                                    <p className="collap-content"><b>Duració:</b> {this.state.duracio.length > 0 ? this.state.tempDur[index] : ""}min.</p>
+                                    <p className="collap-content"><b>Descripció:</b> {this.state.descriptions.length > 0 ? this.state.tempDes[index] : ""}</p>
+                                    <p className="collap-content"><b>Material:</b> {this.state.materials.length > 0 ? this.state.tempMats[index] : ""}</p>
+                                    <p className="collap-content"><b>Observacions:</b> {this.state.observacions.length > 0 ? this.state.tempObs[index] : ""}</p>
                                 </div>
                             </div>
                         </Collapsible>

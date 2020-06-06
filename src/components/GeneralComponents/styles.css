@@ -498,3 +498,8 @@ tr:nth-child(even){
   align-content: row;
   margin-left: 3%;
 }
+.tipDrop{
+  width: 20%;
+  top: 8px;
+  margin-left: 20px;
+}
