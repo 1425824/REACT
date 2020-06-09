@@ -24,7 +24,7 @@ export default class MultiSelect1 extends Component {
 
 
   componentDidMount() {
-    axios.get('http://localhost:8000/exs')
+    axios.get('http://itennisapi.com/exs')
       .then(res => {
         this.setState({ items: res.data });
       })
@@ -45,7 +45,7 @@ export default class MultiSelect1 extends Component {
     }
     //console.log(ids);
 
-    var path = 'http://localhost:8000/selected';
+    var path = 'http://itennisapi.com/selected';
 
     axios.get(path, {
       params: { ids }
@@ -61,13 +61,25 @@ export default class MultiSelect1 extends Component {
       });
 
   }
+  timepdf(){
+    console.warn( Math.abs(new Date()) )
+  }
+ 
+
+  inter(pdf){
+    //this.timepdf();
+    this.generatePDF(pdf);
+    //this.time2();
+  }
+
   async generatePDF(pdf){
-    var pdftime = new Date();
+    //this.timepdf();
+
     await window.scrollTo(0, 0);
     await this.sendSelectedItems();
-    setTimeout(() => pdf(), 100);
+    setTimeout(() => {pdf(); console.warn(Math.abs(new Date()) ) }, 100);
 
-    console.warn( Math.abs(new Date() - pdftime ) )
+    //await this.time2();
     //await pdf();
   }
 
@@ -94,7 +106,7 @@ export default class MultiSelect1 extends Component {
 
         <Pdf targetRef={ref} filename="report.pdf">
           {({ toPdf }) => (
-            <button className="newtest_btn" style={{marginTop:'10px', zIndex:99 }} onClick={() => this.generatePDF(toPdf)} >Genera informe PDF</button>
+            <button className="newtest_btn" style={{marginTop:'10px', zIndex:99 }} onClick={() => this.inter(toPdf)} >Genera informe PDF</button>
           )}
         </Pdf>
        

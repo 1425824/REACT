@@ -17,7 +17,7 @@ export default class TipSelect extends Component {
 
     }
     componentDidMount() {
-        axios.get('http://localhost:8000/tipologies')
+        axios.get('http://itennisapi.com/tipologies')
           .then(res => {
 
             const entries = res.data.map((value) => {

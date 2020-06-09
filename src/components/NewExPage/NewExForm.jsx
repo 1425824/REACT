@@ -44,7 +44,7 @@ export default class NewExForm extends Component {
         
         event.preventDefault();
 
-        axios.get('http://localhost:8000/newEx',{
+        axios.get('http://itennisapi.com/newEx',{
                 params: {exName: this.state.exName,
                         exDescription: this.state.exDescription,
                         exEstimatedTime: this.state.exEstimatedTime,
