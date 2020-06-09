@@ -24,7 +24,7 @@ export default class MultiSelect1 extends Component {
 
 
   componentDidMount() {
-    axios.get('http://itennisapi.com/exs')
+    axios.get('https://itennisapi.com/exs')
       .then(res => {
         this.setState({ items: res.data });
       })
@@ -45,7 +45,7 @@ export default class MultiSelect1 extends Component {
     }
     //console.log(ids);
 
-    var path = 'http://itennisapi.com/selected';
+    var path = 'https://itennisapi.com/selected';
 
     axios.get(path, {
       params: { ids }

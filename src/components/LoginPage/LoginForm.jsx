@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
         event.preventDefault();
         var hash = crypto.createHash('sha256').update(this.state.password).digest('hex');
 
-        axios.get('http://itennisapi.com/login', {
+        axios.get('https://itennisapi.com/login', {
                 params: {username: this.state.username,
                         password: hash } })  // data a passar
         .then(res => {

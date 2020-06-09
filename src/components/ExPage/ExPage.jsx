@@ -36,7 +36,7 @@ export default class ExPage extends Component {
     componentDidMount() {
         var apiTime = new Date();
 
-        axios.get('http://itennisapi.com/exs')
+        axios.get('https://itennisapi.com/exs')
             .then(res => {
                 this.setState({ trigger: res.data.map((item) => item.label),
                                 tempTrigger: res.data.map((item) => item.label),
@@ -44,7 +44,7 @@ export default class ExPage extends Component {
                 //console.warn(res.data);
             })
 
-        axios.get('http://itennisapi.com/tipologies')
+        axios.get('https://itennisapi.com/tipologies')
         .then(res => {
             var list = res.data.map((item) => item);
             //console.warn(list);
@@ -52,7 +52,7 @@ export default class ExPage extends Component {
             this.setState({ tipologies: ['Totes'].concat(list) });
         })
 
-        axios.get('http://itennisapi.com/exlist')
+        axios.get('https://itennisapi.com/exlist')
             .then(res => {
 
                 this.setState({
@@ -70,7 +70,7 @@ export default class ExPage extends Component {
                 });
             })
 
-            console.warn( Math.abs(apiTime - new Date()) )
+            //console.warn( Math.abs(apiTime - new Date()) )
     }
 
     handleChange(event) {

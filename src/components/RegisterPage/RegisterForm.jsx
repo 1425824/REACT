@@ -40,7 +40,7 @@ export default class RegisterForm extends Component {
         event.preventDefault();
         var hash = crypto.createHash('sha256').update(this.state.password).digest('hex');
         //var hash = bcrypt.hashSync(this.state.password, 8);
-        axios.get('http://itennisapi.com/register', {
+        axios.get('https://itennisapi.com/register', {
                 params: {username: this.state.username,
                         password: hash,
                         email: this.state.email} })  // data a passar
